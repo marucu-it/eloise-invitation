@@ -353,8 +353,18 @@
             color: #d946a0;
             font-style: italic;
             white-space: nowrap;
-            animation: float 2s infinite ease-in-out;
+            opacity: 0;
+            /* hide initially */
+            pointer-events: none;
+            /* ignore clicks */
+            transition: opacity 0.5s ease, transform 0.5s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .invited-text.show {
+            opacity: 1;
+            animation: float 2s infinite ease-in-out;
+            /* show float animation only when visible */
         }
 
         .envelope-flap {
@@ -387,7 +397,7 @@
     <div class="confetti" style="left:30%; top:0;"></div>
     <div class="confetti" style="left:60%; top:-50px;"></div>
     <div class="confetti" style="left:90%; top:-100px;"></div>
-    
+
 
     <div class="container" id="invitationContainer">
         <div class="invitation-card" id="invitationCard">
@@ -427,24 +437,26 @@
 
     <script>
         const rsvpBtn = document.getElementById('rsvpBtn');
-const envelopeFlap = document.querySelector('.envelope-flap');
-const envelopeHeart = document.querySelector('.envelope-heart');
+        const envelopeFlap = document.querySelector('.envelope-flap');
+        const envelopeHeart = document.querySelector('.envelope-heart');
+        const invitedText = document.querySelector('.invited-text');
 
-rsvpBtn.addEventListener('click', () => {
-    // Open flap
-    envelopeFlap.style.transform = 'rotateX(-180deg)';
+        rsvpBtn.addEventListener('click', () => {
+            // Open flap
+            envelopeFlap.style.transform = 'rotateX(-180deg)';
 
-    // Show heart after flap opens
-    setTimeout(() => {
-        envelopeHeart.style.transform = 'translateX(-50%) scale(1)';
-        envelopeHeart.style.opacity = '1';
-    }, 400);
+            // Show heart and invited text after flap opens
+            setTimeout(() => {
+                envelopeHeart.style.transform = 'translateX(-50%) scale(1.4) rotate(-10deg)';
+                envelopeHeart.style.opacity = '1';
+                invitedText.classList.add('show'); // show invited text
+            }, 500);
 
-    // Optional: redirect
-    setTimeout(() => {
-        window.location.href = 'video.html';
-    }, 1000);
-});
+            // Optional: redirect to video
+            setTimeout(() => {
+                window.location.href = 'video.html';
+            }, 1500);
+        });
     </script>
 
 </body>
