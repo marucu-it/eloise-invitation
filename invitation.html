@@ -414,8 +414,8 @@
             </div>
 
             <div class="right-section">
-                <!-- Just the floating message -->
-                <div class="invited-text">You're invited!</div>
+                <!-- Keep invited text -->
+                <div class="invited-text show">You're invited!</div>
 
                 <div class="invitation-text">
                     <h1>Hi! I'm Ellie 🧸</h1>
@@ -431,29 +431,18 @@
         </div>
     </div>
 
-    <script>
-        const rsvpBtn = document.getElementById('rsvpBtn');
-        const envelopeFlap = document.querySelector('.envelope-flap');
-        const envelopeHeart = document.querySelector('.envelope-heart');
+   <script>
+    const rsvpBtn = document.getElementById('rsvpBtn');
+
+    rsvpBtn.addEventListener('click', () => {
+        // Optional: play an animation on the invited text (floating effect)
         const invitedText = document.querySelector('.invited-text');
+        invitedText.classList.add('show');
 
-        rsvpBtn.addEventListener('click', () => {
-            // Open flap
-            envelopeFlap.style.transform = 'rotateX(-180deg)';
-
-            // Show heart and invited text after flap opens
-            setTimeout(() => {
-                envelopeHeart.style.transform = 'translateX(-50%) scale(1.4) rotate(-10deg)';
-                envelopeHeart.style.opacity = '1';
-                invitedText.classList.add('show'); // show invited text
-            }, 500);
-
-            // Optional: redirect to video
-            setTimeout(() => {
-                window.location.href = 'video.html';
-            }, 1500);
-        });
-    </script>
+        // Redirect to video page
+        window.location.href = 'video.html';
+    });
+</script>
 
 </body>
 
