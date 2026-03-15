@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eli's Video Invitation</title>
+<style>
+    html, body {
+        margin: 0;
+ 
+        height: 100%;
+        font-family: 'Georgia', serif;
+        background: url('https://wallpapers.com/images/high/pink-background-3840-x-2160-wallpaper-3hv3h8ozup9iwhsd.webp') center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(26,26,26,0.7) 0%, rgba(45,45,45,0.7) 100%);
+        z-index: 0;
+    }
+
+    .invitation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        width: 90%;
+        max-width: 900px;
+        height: 80vh;
+        align-items: center;
+        justify-items: center;
+        z-index: 1;
+        position: relative; /* optional translucent overlay */
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .video-container {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 9 / 16; /* portrait */
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .info-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .info-section h2 {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    .info-section p {
+        font-size: 14px;
+        margin: 0;
+        color: #ddd;
+    }
+
+    .qr-code {
+        width: 150px;
+        height: 150px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #e0e0e0;
+    }
+
+    .qr-code img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .qr-text {
+        font-size: 12px;
+        color: #ccc;
+        margin-top: 6px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .invitation-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            height: auto;
+        }
+
+        .video-container {
+            max-width: 80%;
+            aspect-ratio: 9/16;
+        }
+
+        .info-section h2 {
+            font-size: 22px;
+        }
+
+        .info-section p {
+            font-size: 12px;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+        }
+
+        .qr-text {
+            font-size: 11px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .video-container {
+            max-width: 90%;
+        }
+
+        .info-section h2 {
+            font-size: 20px;
+        }
+
+        .info-section p {
+            font-size: 11px;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+        }
+
+        .qr-text {
+            font-size: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="invitation-grid">
+    <!-- Left: Video -->
+    <div class="video-container">
+        <video controls autoplay preload="metadata">
+            <source src="public/eli.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Right: Info + QR -->
+        <div class="info-section">
+        <h2>Eli's Special Video Invitation 🎉</h2>
+        <p>Watch Eli invite you to the celebration!</p>
+
+        <div class="qr-code">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCTXb9QAUSBTXxag4PpA-lZuYpl4Ed90w1dgxcFJu4sJDPwA/viewform?usp=header" target="_blank">
+                <img src="public/qr-image.png" alt="RSVP QR Code">
+            </a>
+        </div>
+        <p class="qr-text">Scan or click to RSVP 🎂</p>
+    </div>
+</div>
+
+</body>
+</html>
